@@ -11,6 +11,7 @@
     <th>Deskripsi</th>
     </tr>
     ...
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
 {% for barang in list_barang %}
     <tr>
@@ -20,5 +21,5 @@
     </tr>
 {% endfor %}
 </table>
-
+<button><a href="{% url 'wishlist:logout' %}">Logout</a></button>
 {% endblock content %}
