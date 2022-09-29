@@ -4,22 +4,30 @@
 <h5>Nama: </h5>
 <p>Reza Taufiq Yahya</p>
 
-<table>
+<nav class="navbar bg-secondary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1 text-warning">Nama: Reza Taufiq Yahya</span>
+      <button><a href="{% url 'wishlist:logout' %}">Logout</a></button>
+    </div>
+  </nav>
+
+<table class="table table-success table-striped table-bordered">
     <tr>
-    <th>Nama Barang</th>
-    <th>Harga Barang</th>
-    <th>Deskripsi</th>
+    <th class="table-light">Nama Barang</th>
+    <th class="table-light">Harga Barang</th>
+    <th class="table-light">Deskripsi</th>
     </tr>
+    <tbody class="table-group-divider">
     ...
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-{% comment %} Tambahkan data di bawah baris ini {% endcomment %}
-{% for barang in list_barang %}
+    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+    {% for barang in list_barang %}
     <tr>
         <th>{{barang.nama_barang}}</th>
         <th>{{barang.harga_barang}}</th>
         <th>{{barang.deskripsi}}</th>
     </tr>
-{% endfor %}
+    {% endfor %}
 </table>
-<button><a href="{% url 'wishlist:logout' %}">Logout</a></button>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}
