@@ -36,6 +36,15 @@ def register(request):
     context = {'form':form}
     return render(request, 'register.html', context)
 
+def show_wishlist_ajax(request):
+    data_barang_wishlist = BarangWishlist.objects.all()
+    context = {
+    'list_barang': data_barang_wishlist,
+    'nama': 'Reza Taufiq Yahya',
+    'last_login': request.COOKIES['last_login'],
+}
+    return render(request, "wishlist_ajax.html", context)
+
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')

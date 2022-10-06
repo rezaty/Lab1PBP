@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h5>Nama: </h5>
+<p>Reza Taufiq Yahya</p>
+
+<nav class="navbar bg-secondary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1 text-warning">Nama: Reza Taufiq Yahya</span>
+      <button><a href="{% url 'wishlist:logout' %}">Logout</a></button>
+    </div>
+  </nav>
+
+<table class="table table-success table-striped table-bordered">
+    <tr>
+    <th class="table-light">Nama Barang</th>
+    <th class="table-light">Harga Barang</th>
+    <th class="table-light">Deskripsi</th>
+    </tr>
+    <tbody class="table-group-divider">
+    ...
+    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+  <button>load data</button>
+  <h5>Sesi terakhir login: {{ last_login }}</h5>
+  
+  <!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.get("../json/", function(data){
+      var data_wishlist = '';
+    $.each(data, function(key, value){
+        data_wishlist += '<tr>';
+        data_wishlist += '<td>' + value.fields.nama_barang +'</td>';
+        data_wishlist += '<td>' + value.fields.harga_barang +'</td>';
+        data_wishlist += '<td>' + value.fields.deskripsi +'</td>';
+        data_wishlist += '</tr>';
+    });
+    $('#wishlist_table').append(data_wishlist);
+});
+});
+});
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+    
+  {% endblock content %}
